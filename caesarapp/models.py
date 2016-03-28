@@ -20,3 +20,11 @@ class CaesarCipher:
             index = self.shiftedAlphabet.index(character)
             decryptedMessage += self.alphabet[index]
         return decryptedMessage
+
+
+class UserInput(models.Model):
+    plain_text = models.CharField(max_length=140)
+    key = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.plain_text
