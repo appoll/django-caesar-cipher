@@ -4,5 +4,8 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def indexCaesarApp(request):
-    return HttpResponse("Hello World, this is the CaesarApp index.")
+def index(request):
+    return HttpResponse("Hello World")
+
+def about(request):
+    return HttpResponse("Hello Universe")
