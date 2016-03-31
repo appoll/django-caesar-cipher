@@ -11,7 +11,15 @@ def index(request):
 
 
 def encrypt(request):
-    return render(request, 'caesarapp/encrypt.html', {})
+    if request.method == "POST":
+        form = UserInputForm(request.POST)
+        if (form.is_valid()):
+            userInput = form.save(commit=False)
+            userInput.pub_date = timezone.now()
+            userInput.save()
+    else:
+        form = UserInputForm()
+    return render(request, 'caesarapp/encrypt.html', {'form': form})
 
 
 def about(request):

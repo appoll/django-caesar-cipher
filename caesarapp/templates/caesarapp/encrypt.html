@@ -1,4 +1,8 @@
 
-<h1>
-	New Encryption
-</h1>
+{% block content %}
+    <h1>New Encryption</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Encrypt</button>
+    </form>
+{% endblock %}
