@@ -24,7 +24,7 @@ class CaesarCipher:
 
 class UserInput(models.Model):
     plain_text = models.CharField(max_length=140)
-    key = models.IntegerField(default=0)
+    encryption_key = models.IntegerField(default=0)
     pub_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
