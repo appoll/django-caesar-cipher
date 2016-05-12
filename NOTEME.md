@@ -38,9 +38,9 @@ The project structure following `django-admin startproject caesar` looks like th
 				tests.py
 				views.py
 
-**Note** *models.py* and *views.py* only exist in the *app* directory
+**Note** *models.py* and *views.py* only exist in the *app* directory  
 
-[**source**](https://docs.djangoproject.com/en/1.9/intro/tutorial01/)    
+[**source**](https://docs.djangoproject.com/en/1.9/intro/tutorial01/)  
 2. After performing **any** changes on the models, Django needs to prepare migration files and apply them to the database to update its contents:
 
 		$ manage.py makemigrations <app-name>  
@@ -48,8 +48,14 @@ The project structure following `django-admin startproject caesar` looks like th
   
 
 **Note** the second command runs all non-applied migrations against the database. The separation of commands allows for migrations to be handled and/or reused independently (committed, shipped, etc.)    
-[**source**](https://docs.djangoproject.com/en/1.9/intro/tutorial02/)   
-3. 
+[**source**](https://docs.djangoproject.com/en/1.9/intro/tutorial02/)  
+3. a view method can:
+
+* be modest and return a **HttpResponse**
+* be more elegant and call **render()**, which takes as parameters the initial request, a template and a dictionary
+    
+[**source**](https://docs.djangoproject.com/en/1.9/intro/tutorial03/#a-shortcut-render)  
+4. 
 
 ## Git notes ##
 1. **when:** 

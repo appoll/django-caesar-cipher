@@ -29,8 +29,7 @@ def encrypted(request, userInput_id):
     userInput = get_object_or_404(UserInput, pk=userInput_id)
     caesarCipher = CaesarCipher(userInput.encryption_key)
     encryptedText = caesarCipher.encrypt(userInput.plain_text)
-    response = "You're looking at the encryption of your text \"%s\" with the key %s: %s"
-    return HttpResponse(response % (userInput.plain_text, userInput.encryption_key, encryptedText))
+    return render(request, 'caesarapp/encrypted.html', {'userInput': userInput, 'encrypted': encryptedText})
 
 def about(request):
     return HttpResponse("Hello Universe")
