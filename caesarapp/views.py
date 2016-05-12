@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 
+from caesarapp.CaesarCipher import CaesarCipher
 from .models import UserInput
 from .forms import UserInputForm
 import pdb
@@ -29,9 +30,10 @@ def encrypt(request):
 def encrypted(request, userInput_id):
     pdb.set_trace()
     userInput = get_object_or_404(UserInput, pk=userInput_id)
-    response = "You're looking at the encryption of your message \"%s\"."
-    return HttpResponse(response % userInput.plain_text)
-
+    caesarCipher = CaesarCipher(userInput.encryption_key)
+    encryptedText = caesarCipher.encrypt(userInput.plain_text)
+    response = "You're looking at the encryption of your text \"%s\" with the key %s: %s"
+    return HttpResponse(response % (userInput.plain_text, userInput.encryption_key, encryptedText))
 
 def about(request):
     return HttpResponse("Hello Universe")
