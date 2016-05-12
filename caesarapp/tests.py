@@ -1,6 +1,10 @@
 from django.test import TestCase
 
 # Create your tests here.
+from django.utils.crypto import random
+
+from caesarapp.CaesarCipher import CaesarCipher
+
 
 class CaesarCipherTestCase(TestCase):
     def setUp(self):
