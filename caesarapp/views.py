@@ -6,7 +6,6 @@ from django.utils import timezone
 from caesarapp.CaesarCipher import CaesarCipher
 from .models import UserInput
 from .forms import UserInputForm
-import pdb
 
 # Create your views here.
 
@@ -21,14 +20,12 @@ def encrypt(request):
             userInput = form.save(commit=False)
             userInput.pub_date = timezone.now()
             userInput.save()
-            pdb.set_trace()
             return HttpResponseRedirect(reverse('encrypted', args=(userInput.id, )))
     else:
         form = UserInputForm()
     return render(request, 'caesarapp/encrypt.html', {'form': form})
 
 def encrypted(request, userInput_id):
-    pdb.set_trace()
     userInput = get_object_or_404(UserInput, pk=userInput_id)
     caesarCipher = CaesarCipher(userInput.encryption_key)
     encryptedText = caesarCipher.encrypt(userInput.plain_text)
