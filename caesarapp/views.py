@@ -33,3 +33,8 @@ def encrypted(request, userInput_id):
 
 def about(request):
     return HttpResponse("Hello Universe")
+
+def history(request):
+    latest_userInput_list = UserInput.objects.order_by('pub_date')
+    output = ', '.join([userInput.plain_text for userInput in latest_userInput_list])
+    return HttpResponse(output)
