@@ -9,13 +9,19 @@ class CaesarCipher:
     def encrypt(self, message):
         encryptedMessage = ''
         for character in message:
-            index = self.alphabet.index(character)
-            encryptedMessage += self.shiftedAlphabet[index]
+            if (character.isspace()):
+                encryptedMessage += " "
+            else:
+                index = self.alphabet.index(character)
+                encryptedMessage += self.shiftedAlphabet[index]
         return encryptedMessage
 
     def decrypt(self, message):
         decryptedMessage = ''
         for character in message:
-            index = self.shiftedAlphabet.index(character)
-            decryptedMessage += self.alphabet[index]
+            if (character.isspace()):
+                decryptedMessage += " "
+            else:
+                index = self.shiftedAlphabet.index(character)
+                decryptedMessage += self.alphabet[index]
         return decryptedMessage

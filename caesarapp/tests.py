@@ -16,3 +16,9 @@ class CaesarCipherTestCase(TestCase):
         encrypted = self.testCipher.encrypt(self.message)
         decrypted = self.testCipher.decrypt(encrypted)
         self.assertEqual(self.message, decrypted)
+
+    def test_encrypt_decrypt_multiple_words(self):
+        message = "multiple words with multiple   white spaces"
+        encrypted = self.testCipher.encrypt(message)
+        decrypted = self.testCipher.decrypt(encrypted)
+        self.assertEqual(message, decrypted)
