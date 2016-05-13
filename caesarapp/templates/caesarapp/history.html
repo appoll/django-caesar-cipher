@@ -1,0 +1,10 @@
+{% if latest_userInput_list %}
+    <ul>
+    {% for userInput in latest_userInput_list %}
+        {% comment %}<li><a href="/polls/{{ question.id }}/">{{ userInput.plain_text }}</a></li>{% endcomment %}
+        <li>{{ userInput.plain_text }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>History of encryption requests is empty.</p>
+{% endif %}

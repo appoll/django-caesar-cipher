@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.template import loader
 from django.utils import timezone
 
 from caesarapp.CaesarCipher import CaesarCipher
@@ -36,5 +37,9 @@ def about(request):
 
 def history(request):
     latest_userInput_list = UserInput.objects.order_by('pub_date')
-    output = ', '.join([userInput.plain_text for userInput in latest_userInput_list])
-    return HttpResponse(output)
+    template = loader.get_template('caesarapp/history.html')
+    context = {
+        'latest_userInput_list': latest_userInput_list,
+    }
+    #return HttpResponse(template.render(context, request))
+    return render(request, 'caesarapp/history.html', context)
